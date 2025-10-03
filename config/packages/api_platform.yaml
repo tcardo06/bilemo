@@ -1,7 +1,11 @@
 api_platform:
-    title: Hello API Platform
-    version: 1.0.0
-    defaults:
-        stateless: true
-        cache_headers:
-            vary: ['Content-Type', 'Authorization', 'Origin']
+  defaults:
+    pagination_enabled: true
+    cache_headers:
+      etag: true
+      max_age: 3600
+      shared_max_age: 3600
+      vary: ['Content-Type', 'Authorization', 'Origin']
+  formats:
+    jsonld: [ 'application/ld+json' ]
+    json:   [ 'application/json' ]
