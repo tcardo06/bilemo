@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\State\CustomerProcessor;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
 #[ORM\Table(name: 'customer')]
@@ -27,6 +30,8 @@ use App\State\CustomerProcessor;
     normalizationContext: ['groups' => ['customer:read']],
     denormalizationContext: ['groups' => ['customer:write']]
 )]
+#[ApiFilter(OrderFilter::class, properties: ['createdAt', 'email', 'fullName'])]
+#[ApiFilter(SearchFilter::class, properties: ['email' => 'partial', 'fullName' => 'partial'])]
 class Customer
 {
     #[ORM\Id]
