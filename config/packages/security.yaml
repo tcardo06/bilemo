@@ -33,7 +33,11 @@ security:
             jwt: ~
 
     access_control:
-        - { path: ^/auth, roles: PUBLIC_ACCESS }
+        - { path: ^/api/docs(\.json)?$, roles: PUBLIC_ACCESS }
+        - { path: ^/docs(\.json)?$, roles: PUBLIC_ACCESS }
+
+        - { path: ^/auth$, roles: PUBLIC_ACCESS }
+
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
