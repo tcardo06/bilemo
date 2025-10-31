@@ -6,6 +6,13 @@ api_platform:
       max_age: 3600
       shared_max_age: 3600
       vary: ['Content-Type', 'Authorization', 'Origin']
+
+  swagger:
+    api_keys:
+      JWT:
+        name: Authorization
+        type: header
+
   formats:
     jsonld: [ 'application/ld+json' ]
     json:   [ 'application/json' ]
